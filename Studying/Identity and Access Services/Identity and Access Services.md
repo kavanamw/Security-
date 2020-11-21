@@ -1,0 +1,77 @@
+Identity and Access Services 
+
+- gaining access
+    - ![a1f02df034d851bd85173c23fb3c9993.png](../../../_resources/70fa130a7cc445a0afe95ab24f8e8187.png)
+- RADIUS (Remote auth dial-in user service) 
+    - most common AAA protocols
+    - supports a wide variety of platforms and devices
+    - not just for dial-in
+    - certeralizes auth for users
+        - routers, switches, firewalls
+        - server auth
+        - remote access VPN
+        - 802.1X network access
+    - RADIUS service available on almost any server os
+- TACACS (Terminal Access Controller Access-control System)
+    - remote auth protocol
+    - created to control access to dial-up lines to ARPANET
+    - XTACACS (Extended TACACS)
+        - a cisco created (proprietary) version of TACACS
+        - additonal support for accounting and audition
+    - TACACS+
+        - latest version of TACAS, not backwards campatible
+        - more auth requrests and response codes
+        - released as an open stardard in 1993
+- LDAP (Lightwwieight Direcctory Access Protocol)
+    - protocol for reading and writing directories over an IP network
+    - X.500 sepc was written be the international telecom unioun
+    - DAP ran on the OSI protocol stack
+        - uses TCP/IP (tcp/389 and udp/389)
+    - LDAP is the protocol used to query and update an X.500 directory
+        - used in Windows AD, apple opendirectory and opendap
+- X.500 distingusied names
+    - attribute = value pairs
+    - most specific attribute is listed first
+    - ![283054191d5ff041014baed06237bc5b.png](../../../_resources/85845f20d77346c6bb89d2de97e27e04.png)
+- X.500 Directory info tree
+    - hierarchial structure
+    - container objects, country, org
+    - leaf objects
+        - users, computers, printers, files
+    - ![b2f518de5003216912f473778f4e7a4b.png](../../../_resources/5bf69a7f7669486b80bc8f3965ed6b2a.png)
+- Microsfot NTLM
+    - windows challenge/response
+        - domain name, username, password hash
+    - LAN manage (LANMAN)
+        - microsoft and 3com network os
+    - NT LAN mamanger v3 (NTLM) challenge/response
+        - hash challenge (simillar to CHAP)
+        - somewhat insecure
+            - MD5 password hash
+            - HMAC-MD5 hash of username and server name
+            - variable-l;ength challenge of timestamp, random data, domain name
+    - vulns
+        - some windows password databases contain LM hash version of the passwords
+            - done for compatibility
+        - NTLM vuln to a cred forwarding attack
+        - migrate to kerberos to fix these
+- kerberos
+    - network auth protocol
+        - auth once, trusted by the system
+        - mutual auth
+            - the client and the server
+            - protects against the main in the middle or replay atacks
+    - standard since the 1980s
+        - developed at MIT
+        - RFC 4120
+    - microsoft started using kerberos in windows 2000
+        - based on kerberos 5.0 open standard
+        - compatible with other os and devices
+- SSO with kerberos
+    - auth one time
+        - lots of backend ticketing
+        - crypto tecks
+    - no contant username and password input
+        - saves time
+    - only work with kerberos
+        - not everyting is kerberos friendly
